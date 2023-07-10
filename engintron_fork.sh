@@ -680,7 +680,7 @@ install|update)
 		#patch
         wget --no-check-certificate -O engintron_fork.zip https://github.com/zstergios/engintron/archive/refs/heads/support-websockets.zip
         unzip engintron_fork.zip
-        cp -ru $APP_PATH/engintron-support-websockets/* $APP_PATH/
+        cp -rfu $APP_PATH/engintron-support-websockets/* $APP_PATH/
 		#remove files		
         rm -rf $APP_PATH/engintron-master/*
 		rm -rf $APP_PATH/engintron-support-websockets/*
