@@ -655,8 +655,8 @@ install|update)
     echo ""
 
     # Cleanup Engintron v1.x installation location
-    if [ -f /engintron.sh ]; then
-        rm -f /engintron.sh
+    if [ -f /engintron_fork.sh ]; then
+        rm -f /engintron_fork.sh
     fi
     if [ -d /usr/local/src/engintron ]; then
         rm -rf /usr/local/src/engintron
@@ -686,7 +686,10 @@ install|update)
 		rm -rf $APP_PATH/engintron-support-websockets/*
         rm -f $APP_PATH/engintron.zip
 		rm -f $APP_PATH/engintron_fork.zip
-		
+
+	if [ -f /engintron.sh ]; then
+	    rm -f /engintron.sh
+	 fi
     fi
 
     echo ""
@@ -735,9 +738,9 @@ install|update)
     fi
     echo "on" > $APP_PATH/state.conf
 
-    if [ -f $APP_PATH/engintron.sh ]; then
-        chmod +x $APP_PATH/engintron.sh
-        $APP_PATH/engintron.sh purgecache
+    if [ -f $APP_PATH/engintron_fork.sh ]; then
+        chmod +x $APP_PATH/engintron_fork.sh
+        $APP_PATH/engintron_fork.sh purgecache
     fi
 
     /scripts/restartsrv apache_php_fpm
@@ -755,7 +758,7 @@ install|update)
 
     # Enable "engintron" shortcut
     if [ ! -f "/usr/local/sbin/engintron" ]; then
-        ln -s $APP_PATH/engintron.sh /usr/local/sbin/engintron
+        ln -s $APP_PATH/engintron_fork.sh /usr/local/sbin/engintron
     fi
 
     # Make installers executable
